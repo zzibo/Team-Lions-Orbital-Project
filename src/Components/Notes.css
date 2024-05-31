@@ -1,0 +1,43 @@
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  width: 500px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.notes-title {
+  padding-left: 10px;
+}
+.notes-subject {
+  padding-left: 10px;
+}
+.delete-button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: rgb(255, 159, 159);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 5px;
+}
+.delete-button:hover {
+  background-color: rgb(221, 107, 107);
+}
+
+.delete-button:active {
+  background-color: #5c5c5c; /* Change color when button is clicked*/
+}

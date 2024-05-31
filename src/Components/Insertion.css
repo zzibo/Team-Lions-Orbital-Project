@@ -1,0 +1,80 @@
+/* google font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
+
+.insertion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 20px;
+  margin: 20px;
+  width: 25%;
+}
+
+.pdf-input {
+  display: none;
+}
+
+.Button {
+  font-family: "Poppins";
+  margin: 30px;
+  background-color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  /* smooth transition to the hover */
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.Button:hover {
+  background-color: rgb(175, 175, 175);
+}
+
+.Button:active {
+  background-color: #5c5c5c; /* Change color when button is clicked*/
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-label {
+  cursor: pointer;
+  font-family: "Poppins";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-logo {
+  padding-top: 10px;
+  width: 75px;
+  height: 75px;
+}
+
+.no-pdf-error {
+  font-family: "Poppins";
+  color: white;
+}
+
+.error-container {
+  background-color: rgb(255, 84, 84);
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 15px;
+}

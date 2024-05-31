@@ -1,0 +1,20 @@
+/* google font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
+
+.App-navbar {
+  background-color: white;
+  font-family: "Poppins";
+  color: black;
+  padding: 1px 10px;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+}
+
+.App-navbar img {
+  padding: 10px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
