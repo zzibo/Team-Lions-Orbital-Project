@@ -1,5 +1,4 @@
 import Notes from "./Notes";
-import { useState } from "react";
 import "./Notes.css";
 function NotesStorage({ notes, handleRemoveNote }) {
   console.log("Notes array:", notes);
