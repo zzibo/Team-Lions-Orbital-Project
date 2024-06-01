@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/zzibo/Team-Lions-Orbital-Project.git/static/css/main.29e0bf57.css",
-    "main.js": "/zzibo/Team-Lions-Orbital-Project.git/static/js/main.19770b5f.js",
-    "static/js/453.58ee79a0.chunk.js": "/zzibo/Team-Lions-Orbital-Project.git/static/js/453.58ee79a0.chunk.js",
-    "static/media/EchonotesLogo.png": "/zzibo/Team-Lions-Orbital-Project.git/static/media/EchonotesLogo.34711d9f102e871e2291.png",
-    "index.html": "/zzibo/Team-Lions-Orbital-Project.git/index.html",
-    "main.29e0bf57.css.map": "/zzibo/Team-Lions-Orbital-Project.git/static/css/main.29e0bf57.css.map",
-    "main.19770b5f.js.map": "/zzibo/Team-Lions-Orbital-Project.git/static/js/main.19770b5f.js.map",
-    "453.58ee79a0.chunk.js.map": "/zzibo/Team-Lions-Orbital-Project.git/static/js/453.58ee79a0.chunk.js.map"
+    "main.css": "/Team-Lions-Orbital-Project/static/css/main.29e0bf57.css",
+    "main.js": "/Team-Lions-Orbital-Project/static/js/main.d674ad62.js",
+    "static/js/453.58ee79a0.chunk.js": "/Team-Lions-Orbital-Project/static/js/453.58ee79a0.chunk.js",
+    "static/media/EchonotesLogo.png": "/Team-Lions-Orbital-Project/static/media/EchonotesLogo.34711d9f102e871e2291.png",
+    "index.html": "/Team-Lions-Orbital-Project/index.html",
+    "main.29e0bf57.css.map": "/Team-Lions-Orbital-Project/static/css/main.29e0bf57.css.map",
+    "main.d674ad62.js.map": "/Team-Lions-Orbital-Project/static/js/main.d674ad62.js.map",
+    "453.58ee79a0.chunk.js.map": "/Team-Lions-Orbital-Project/static/js/453.58ee79a0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.29e0bf57.css",
-    "static/js/main.19770b5f.js"
+    "static/js/main.d674ad62.js"
   ]
 }
