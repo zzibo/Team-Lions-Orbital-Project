@@ -15,7 +15,7 @@
 ## Goals for milestone 1
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; color:black; background-color: lightgrey; margin: 10px 0;">
-  In milestone 1, our goals was to have a functional frontend that allows us to store notes and a backend that stores the data. The techstack we sued is MERN. We use React for our frontend and Express.js for the backend with MongoDB as the choice of database. However, we ran into problems while attempting to store PDFs in our backend which is a key problem we hope to address for milestone 2.
+  In milestone 1, our goals was to have a functional frontend that allows us to store notes and a backend that stores the data. The techstack we used is MERN. We use React for our frontend and Express.js for the backend with MongoDB as the choice of database. However, we ran into problems while attempting to store PDFs in our backend which is a key problem we hope to address for milestone 2.
 </div>
 
 ## Key Features
