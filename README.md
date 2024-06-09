@@ -70,4 +70,4 @@ Back-end:
 Storage:
 - MongoDB Atlas hosted on Vercel
 
-Collaboration done on Github 
+Collaboration done on Github and Git
