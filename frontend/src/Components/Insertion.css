@@ -1,0 +1,113 @@
+/* google font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
+
+.insertion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 20px;
+  margin: 20px;
+  width: 25%;
+}
+
+/* homepage */
+
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+.workout-details {
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+.workout-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+.workout-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+.workout-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+
+
+.button {
+  font-family: "Poppins";
+  margin: 30px;
+  background-color: green;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  /* smooth transition to the hover */
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.button:hover {
+  background-color: rgb(175, 175, 175);
+}
+
+.button:active {
+  background-color: #5c5c5c; /* Change color when button is clicked*/
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-label {
+  cursor: pointer;
+  font-family: "Poppins";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-logo {
+  padding-top: 10px;
+  width: 75px;
+  height: 75px;
+}
+
+.no-pdf-error {
+  font-family: "Poppins";
+  color: white;
+}
+
+.error-container {
+  background-color: rgb(255, 84, 84);
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 15px;
+}
