@@ -2,13 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
 
 .App-navbar {
-  background-color: white;
+  background-color: rgb(205, 232, 229);
   font-family: "Poppins";
   color: black;
   padding: 1px 10px;
   font-size: larger;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .App-navbar img {

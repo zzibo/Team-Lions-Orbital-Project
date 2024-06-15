@@ -1,38 +1,39 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react";
+import { useNotesContext } from "../Hooks/useNotesContext";
+import "./Home.css";
 
 // components
-import NotesStorage from "../Components/NotesStorage"
-import Insertion from "../Components/Insertion"
+import Notes from "../Components/Notes";
+import NoteForm from "../Components/NoteForm";
 
 const Home = () => {
-  const [notes, setNotes] = useState(null)
+  const { notes, dispatch } = useNotesContext();
 
+  //activates when notesProvider is rendered for the first time
   useEffect(() => {
     const fetchNotes = async () => {
-      const response = await fetch('/api/notes')
-      const json = await response.json()
+      const response = await fetch("/api/notes");
+      const json = await response.json();
 
       if (response.ok) {
-        setNotes(json)
+        dispatch({ type: "SET_NOTES", payload: json });
       }
-    }
+    };
 
-    fetchNotes()
-  }, [])
+    fetchNotes();
+  }, [dispatch]);
 
   return (
     <div className="home">
-      <Insertion/>
+      <NoteForm />
       <h1 className="yournotes-header" style={{ marginLeft: "10px" }}>
         Your Notes
       </h1>
       <div className="notes">
-        {notes && notes.map(note => (
-          <NotesStorage note={note} key={note._id} />
-        ))}
+        {notes && notes.map((note) => <Notes note={note} key={note._id} />)}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,72 +1,82 @@
-import { useState } from "react";
-import "./Insertion.css";
-//import uploadlogo from "../Assets/UploadLogo.png"
+import { useContext, useState } from "react";
+import "./NoteForm.css";
+import uploadlogo from "../Assets/UploadLogo.png";
+import { useNotesContext } from "../Hooks/useNotesContext";
 //import UploadPopup from "./UploadPopup";
 
 const NoteForm = () => {
-  const [title, setTitle] = useState('')
-  const [subject, setSubject] = useState('')
-  const [body, setBody] = useState('')
-  const [error, setError] = useState(null)
+  const [title, setTitle] = useState("");
+  const [subject, setSubject] = useState("");
+  const [pdf, setPdf] = useState(null);
+  const [error, setError] = useState(null);
+  const { dispatch } = useNotesContext();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const note = {title, subject, body}
+    e.preventDefault();
 
-    const response = await fetch('/api/notes', {
-      method: 'POST',
-      body: JSON.stringify(note),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    const json = await response.json()
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("subject", subject);
+    formData.append("pdf", pdf);
+
+    const response = await fetch("/api/notes", {
+      method: "POST",
+      body: formData,
+    });
+    const json = await response.json();
 
     if (!response.ok) {
-      setError(json.error)
-    } 
-    if (response.ok) {
-      setError(null)
-      setTitle('')
-      setSubject('')
-      setBody('')
-      console.log('new note added: ', json)
+      setError(json.error);
     }
-  }
+    if (response.ok) {
+      setError(null);
+      setTitle("");
+      setSubject("");
+      setPdf(null);
+      dispatch({ type: "CREATE_NOTE", payload: json });
+      console.log("new note added: ", json);
+    }
+  };
 
   return (
-    <form className="create" onSubmit={handleSubmit}> 
+    <form className="note-form" onSubmit={handleSubmit}>
       <h3>Add a New Note</h3>
 
       <label>Note title:</label>
-      <input 
-        type="text" 
-        onChange={(e) => setTitle(e.target.value)} 
+      <input
+        type="text"
+        onChange={(e) => setTitle(e.target.value)}
         value={title}
       />
 
       <label>Subject: </label>
-      <input 
-        type="text" 
-        onChange={(e) => setSubject(e.target.value)} 
+      <input
+        type="text"
+        onChange={(e) => setSubject(e.target.value)}
         value={subject}
       />
-
-      <label>Body: </label>
-      <input 
-        type="text" 
-        onChange={(e) => setBody(e.target.value)} 
-        value={body} 
-      />
+      <label>PDF: </label>
+      <input
+        type="file"
+        accept=".pdf"
+        className="pdf-input"
+        id="pdf-input"
+        placeholder="Upload your PDF here"
+        onChange={(e) => setPdf(e.target.files[0])}
+      ></input>
+      <label htmlFor="pdf-input" className="input-label">
+        {pdf ? pdf.name : "Upload your PDF here!"}
+        {!pdf && <img src={uploadlogo} alt="Upload" className="upload-logo" />}
+      </label>
 
       <button>Add Note</button>
-      
+
       {error && <div className="error">{error}</div>}
     </form>
-  )
-}
+  );
+};
 
-export default NoteForm
+export default NoteForm;
 
 /*
 function Insertion({ handleCreateNote }) {
