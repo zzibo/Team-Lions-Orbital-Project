@@ -1,40 +1,53 @@
-import { useContext, useState } from "react";
-import "./NoteForm.css";
-import uploadlogo from "../Assets/UploadLogo.png";
-import { useNotesContext } from "../Hooks/useNotesContext";
-//import UploadPopup from "./UploadPopup";
+import { useContext, useState } from "react"
+import "./NoteForm.css"
+import uploadlogo from "../Assets/UploadLogo.png"
+import { useNotesContext } from "../Hooks/useNotesContext"
+import { useAuthContext } from "../Hooks/useAuthContext"
 
 const NoteForm = () => {
-  const [title, setTitle] = useState("");
-  const [subject, setSubject] = useState("");
-  const [pdf, setPdf] = useState(null);
-  const [error, setError] = useState(null);
-  const { dispatch } = useNotesContext();
+  const { dispatch } = useNotesContext()
+  const { user } = useAuthContext()
+
+  const [title, setTitle] = useState("")
+  const [subject, setSubject] = useState("")
+  const [pdf, setPdf] = useState(null)
+  const [error, setError] = useState(null)
+  const [emptyFields, setEmptyFields] = useState([])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("subject", subject);
-    formData.append("pdf", pdf);
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
+
+    const formData = new FormData()
+    formData.append("title", title)
+    formData.append("subject", subject)
+    formData.append("pdf", pdf)
 
     const response = await fetch("/api/notes", {
       method: "POST",
       body: formData,
+      headers: {
+        //'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+      }
     });
     const json = await response.json();
 
     if (!response.ok) {
-      setError(json.error);
+      setError(json.error)
+      setEmptyFields(json.emptyFields)
     }
     if (response.ok) {
-      setError(null);
-      setTitle("");
-      setSubject("");
-      setPdf(null);
+      setError(null)
+      setTitle("")
+      setSubject("")
+      setPdf(null)
+      setEmptyFields([])
       dispatch({ type: "CREATE_NOTE", payload: json });
-      console.log("new note added: ", json);
     }
   };
 

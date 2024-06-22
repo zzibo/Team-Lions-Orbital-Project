@@ -1,13 +1,23 @@
 import "./Notes.css";
-import { useNotesContext } from "../Hooks/useNotesContext";
+import { useNotesContext } from "../Hooks/useNotesContext"
+import { useAuthContext } from "../Hooks/useAuthContext"
+// date fns
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 function Notes({ note }) {
-  const { dispatch } = useNotesContext();
-  console.log("Notes array:", note);
+  const { dispatch } = useNotesContext()
+  const { user } = useAuthContext()
+  console.log("Notes array:", note)
 
   const handleDelete = async () => {
+    if (!user) {
+      return
+    }
     const response = await fetch("/api/notes/" + note._id, {
       method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
     });
     const json = await response.json();
 
@@ -29,8 +39,8 @@ function Notes({ note }) {
           <strong>pdf: </strong>
           {note.body}
         </p>
-        <p>{note.createdAt}</p>
-        <span onClick={handleDelete}> Delete </span>
+        <p>{formatDistanceToNow(new Date(note.createdAt), { addSuffix: true })}</p>
+        <span className="material-symbols-outlined" onClick={handleDelete}>delete</span>
       </div>
     </div>
   );

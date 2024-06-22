@@ -5,7 +5,9 @@ const upload = multer({ storage: multer.memoryStorage() }).single("pdf");
 
 //get all notes
 const getNotes = async (req, res) => {
-  const notes = await Note.find({}).sort({ createdAt: -1 });
+  const user_id = req.user._id
+
+  const notes = await Note.find({ user_id }).sort({createdAt: -1});
   res.status(200).json(notes);
 };
 
@@ -55,6 +57,7 @@ const createNote = async (req, res) => {
     }
 
     try {
+      const user_id = req.user._id
       const note = await Note.create({
         title,
         subject,
@@ -62,6 +65,7 @@ const createNote = async (req, res) => {
           data: pdfFile.buffer,
           contentType: pdfFile.mimetype,
         },
+        user_id
       });
       res.status(201).json(note);
     } catch (error) {
@@ -94,5 +98,5 @@ module.exports = {
   getNote,
   createNote,
   deleteNote,
-  //updateWorkout
+  //updateNote
 };

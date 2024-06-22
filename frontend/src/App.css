@@ -1,5 +1,9 @@
 body {
-  background: rgb(205, 232, 229);
+  background: rgb(190, 194, 194);
   margin: 0;
   padding: 0;
+}
+
+.pages {
+  background: rgb(190, 194, 194);
 }

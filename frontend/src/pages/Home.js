@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNotesContext } from "../Hooks/useNotesContext";
 import "./Home.css";
+import { useAuthContext } from "../Hooks/useAuthContext"
 
 // components
 import Notes from "../Components/Notes";
@@ -8,11 +9,16 @@ import NoteForm from "../Components/NoteForm";
 
 const Home = () => {
   const { notes, dispatch } = useNotesContext();
+  const {user} = useAuthContext()
 
   //activates when notesProvider is rendered for the first time
   useEffect(() => {
     const fetchNotes = async () => {
-      const response = await fetch("/api/notes");
+      const response = await fetch("/api/notes", {
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      })
       const json = await response.json();
 
       if (response.ok) {
@@ -20,8 +26,10 @@ const Home = () => {
       }
     };
 
-    fetchNotes();
-  }, [dispatch]);
+    if (user) {
+      fetchNotes()
+    }
+  }, [dispatch, user])
 
   return (
     <div className="home">

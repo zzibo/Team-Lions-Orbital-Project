@@ -22,7 +22,13 @@
   right: 20px;
   cursor: pointer;
   background: #f1f1f1;
-  padding: 6px;
+  padding: 3px 6px; /* Adjust padding for smaller size */
   border-radius: 10%;
   background-color: #ff5e5e;
+  font-size: 1.1em; /* Smaller font size */
+  width: 18px; /* Adjust width */
+  height: 18px; /* Adjust height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
