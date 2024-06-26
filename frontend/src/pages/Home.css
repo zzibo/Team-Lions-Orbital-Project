@@ -32,3 +32,10 @@ div.error {
   border-radius: 4px;
   margin: 20px 0;
 }
+
+.notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjust column width as needed */
+  gap: 20px; /* Adjust gap between grid items */
+  padding: 20px; /* Optional padding for grid container */
+}

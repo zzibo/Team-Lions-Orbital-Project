@@ -1,15 +1,22 @@
+.notes-container:hover {
+  transform: scale(1.05); /* Increase size on hover */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Adjust shadow on hover */
+}
+
 .notes-container {
-  background: #fff;
+  background: #ffffff;
   border-radius: 4px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .notes-container h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
-  color: rgb(3, 128, 217);
+  color: #2893b6;
 }
 .notes-container p {
   margin: 0;
