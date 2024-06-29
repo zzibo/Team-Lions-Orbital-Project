@@ -30,11 +30,11 @@ applying studying techniques such as active recall and spaced repetition easily.
 
 - As a student preparing for exams, I want to upload PDF lecture notes and generate interactive quizzes to test my understanding.
 
-- As a student,x I want better way to use studying techniques such as acative recall and space repetition to retian my knowlege
+- As a student, I want better way to use studying techniques such as acative recall and space repetition to retian my knowlege
 
 - As a teacher, I want to recommend personalized study plans and resources to my students based on their learning preferences.
 
-- As professional, I want a way to store technical document and test myself on my knowledge
+- As professional, I want a way to store technical document and test myself on my knowledge with questions tailored to me
 
 ## Goals for milestone 1
 
