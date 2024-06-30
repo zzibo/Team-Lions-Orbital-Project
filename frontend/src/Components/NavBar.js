@@ -32,12 +32,6 @@ function NavBar() {
           <span className="userID">{user.email}</span>
           <ul className="navbar-links">
             <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">Signup</Link>
-            </li>
-            <li>
               <Link to="/aboutUs">About</Link>
             </li>
           </ul>

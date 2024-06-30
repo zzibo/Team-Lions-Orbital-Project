@@ -11,6 +11,7 @@ const NoteForm = () => {
   const [title, setTitle] = useState("")
   const [subject, setSubject] = useState("")
   const [pdf, setPdf] = useState(null)
+  const [pdfFilename, setPdfFilename] = useState("")
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
 
@@ -46,9 +47,16 @@ const NoteForm = () => {
       setTitle("")
       setSubject("")
       setPdf(null)
+      setPdfFilename("")
       setEmptyFields([])
       dispatch({ type: "CREATE_NOTE", payload: json });
     }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setPdf(file);
+    setPdfFilename(file.name)
   };
 
   return (
@@ -75,8 +83,9 @@ const NoteForm = () => {
         className="pdf-input"
         id="pdf-input"
         placeholder="Upload your PDF here"
-        onChange={(e) => setPdf(e.target.files[0])}
-      ></input>
+        onChange={handleFileChange}
+      />
+      
       <label htmlFor="pdf-input" className="input-label">
         {pdf ? pdf.name : "Upload your PDF here!"}
         {!pdf && <img src={uploadlogo} alt="Upload" className="upload-logo" />}

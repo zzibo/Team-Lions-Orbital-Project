@@ -1,0 +1,17 @@
+.note-page {
+    padding: 20px;
+  }
+  
+  .note-page h2 {
+    margin-bottom: 10px;
+  }
+  
+  .note-page p {
+    margin-bottom: 20px;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  

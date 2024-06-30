@@ -38,7 +38,13 @@ const Home = () => {
         Your Notes
       </h1>
       <div className="notes">
-        {notes && notes.map((note) => <Notes note={note} key={note._id} />)}
+        {notes && notes.map((note) => (
+          <Notes 
+            note={note} 
+            key={note._id} 
+            filename={note.filename}
+          />
+        ))}
       </div>
     </div>
   );
