@@ -1,17 +1,37 @@
 .note-page {
-    padding: 20px;
-  }
-  
-  .note-page h2 {
-    margin-bottom: 10px;
-  }
-  
-  .note-page p {
-    margin-bottom: 20px;
-  }
-  
-  .error {
-    color: red;
-    font-weight: bold;
-  }
-  
+  padding: 20px;
+}
+
+.note-page h2 {
+  margin-bottom: 10px;
+}
+
+.note-page p {
+  margin-bottom: 20px;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.mcqs {
+  margin-top: 20px;
+}
+
+.mcq-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.mcq-item {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+
+.separator {
+  height: 20px; /* Adjust the height to increase/decrease the spacing */
+}

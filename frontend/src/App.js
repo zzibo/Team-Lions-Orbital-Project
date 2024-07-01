@@ -2,14 +2,14 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./Hooks/useAuthContext";
 
 // pages & components
-import Home from "./pages/Home"
-import Navbar from "./Components/NavBar"
-import AboutUs from "./pages/AboutUs"
-import { NotesProvider } from "./Context/NotesContext"
-import Login from "./pages/Login"
-import Signup from "./pages/Signup"
-import LandingPage from "./pages/LandingPage"
-import NotePage from "./pages/NotePage"
+import Home from "./Pages/Home";
+import Navbar from "./Components/NavBar";
+import AboutUs from "./Pages/AboutUs";
+import { NotesProvider } from "./Context/NotesContext";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import LandingPage from "./Pages/LandingPage";
+import NotePage from "./Pages/NotePage";
 
 function App() {
   const { user } = useAuthContext();
@@ -35,11 +35,7 @@ function App() {
                 path="/signup"
                 element={!user ? <Signup /> : <Navigate to="/" />}
               />
-              <Route 
-                path="/:noteId" 
-                element={<NotePage />} 
-              />
-              
+              <Route path="/:noteId" element={<NotePage />} />
             </Routes>
           </NotesProvider>
         </div>

@@ -2,21 +2,22 @@ import "./Notes.css";
 import { useNotesContext } from "../Hooks/useNotesContext";
 import { useAuthContext } from "../Hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
+
 // date fns
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 function Notes({ note, filename }) {
   const { dispatch } = useNotesContext();
   const { user } = useAuthContext();
-  const nav = useNavigate()
+  const nav = useNavigate();
   console.log("Notes array:", note);
 
   const clickNote = () => {
-    nav('/' + note._id)
-  }
+    nav("/" + note._id);
+  };
 
   const handleDelete = async (e) => {
-    e.stopPropagation()
+    e.stopPropagation();
     if (!user) {
       return;
     }
@@ -50,7 +51,11 @@ function Notes({ note, filename }) {
           <p>
             {formatDistanceToNow(new Date(note.createdAt), { addSuffix: true })}
           </p>
-          <span className="material-symbols-outlined" onClick={handleDelete} role = "button">
+          <span
+            className="material-symbols-outlined"
+            onClick={handleDelete}
+            role="button"
+          >
             delete
           </span>
         </div>
