@@ -6,20 +6,24 @@ const NoteSchema = new Schema(
   {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     subject: {
       type: String,
-      required: true
+      required: true,
     },
     pdf: {
       data: Buffer,
-      contentType: String
+      contentType: String,
+    },
+    pdfText: {
+      type: String,
+      required: false,
     },
     user_id: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   { timestamps: true }
 );

@@ -2,12 +2,13 @@ const Note = require("../models/noteModel");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() }).single("pdf");
+const pdfParse = require("pdf-parse");
 
 //get all notes
 const getNotes = async (req, res) => {
-  const user_id = req.user._id
+  const user_id = req.user._id;
 
-  const notes = await Note.find({ user_id }).sort({createdAt: -1});
+  const notes = await Note.find({ user_id }).sort({ createdAt: -1 });
   res.status(200).json(notes);
 };
 
@@ -57,7 +58,10 @@ const createNote = async (req, res) => {
     }
 
     try {
-      const user_id = req.user._id
+      // Parse the PDF buffer to extract text
+      const data = await pdfParse(pdfFile.buffer);
+      const pdfText = data.text;
+      const user_id = req.user._id;
       const note = await Note.create({
         title,
         subject,
@@ -65,7 +69,8 @@ const createNote = async (req, res) => {
           data: pdfFile.buffer,
           contentType: pdfFile.mimetype,
         },
-        user_id
+        pdfText,
+        user_id,
       });
       res.status(201).json(note);
     } catch (error) {
