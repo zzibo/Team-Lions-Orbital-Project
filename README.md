@@ -1,8 +1,8 @@
 <h1 align="center">
 <div style = "display: flex; justify-content: center; align-items: center;">
-  <div class="logo-container" style="width: 150px; height: 150px; background-color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; overflow: hidden;">
-  <img src="./frontend/src/Assets/EchonotesLogo.png" alt="EchoNotes Logo" class="logo-img" style="width: 80%; height: auto; display: block; margin: auto;">
-</div>
+  <div style="width: 150px; height: 150px; background-color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+      <img src="./frontend/src/Assets/EchonotesLogo.png" alt="EchoNotes Logo" style="width: 80%; height: auto; display: block; margin: auto;">
+    </div>
 </div>
   <br>
   EchoNotes
@@ -101,12 +101,26 @@ In summary, milestone 2 represents a pivotal stage in our application's developm
 - <Strong>Enhanced UI/UX for Note Page</Strong>
   Recognising the central role of the Note Page in our application, we are implementing significant improvements to its UI and UX. This includes enhancing the note-taking interface, improving organization and search functionalities, and introducing customization options for notes. By making the Note Page more user-friendly and feature-rich, we aim to empower users in managing and revisiting their study materials effortlessly.
 
-## How To Use
+## How To Run Locally
 
-1. Go to settings
-2. Scroll down to pages
-3. Click the link
-4. Start storing your notes!
+1. Clone repository
+
+2. Download the necessary dependencies
+
+3. Navigate to backend and run the file
+
+4. Open another terminal, navigate to frontend and run the file
+
+5. Enjoy! Please try to insert pdf with text as much as possible. Thanks!
+
+```
+git clone https://github.com/zzibo/Team-Lions-Orbital-Project.git
+npm install
+cd backend/
+npm run dev
+cd frontend/
+npm start
+```
 
 ## Current Tech Stack
 
