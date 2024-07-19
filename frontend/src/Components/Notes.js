@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 // date fns
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function Notes({ note, filename }) {
   const { dispatch } = useNotesContext();
@@ -21,7 +22,7 @@ function Notes({ note, filename }) {
     if (!user) {
       return;
     }
-    const response = await fetch("/api/notes/" + note._id, {
+    const response = await fetch(`${apiUrl}/api/notes/` + note._id, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${user.token}`,
