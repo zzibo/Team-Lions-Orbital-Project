@@ -6,6 +6,7 @@ import "./NotePage.css";
 import { OpenAI } from "openai";
 
 import Mcq from "../Components/Mcq";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const NotePage = () => {
   const { noteId } = useParams();
@@ -13,14 +14,14 @@ const NotePage = () => {
   const [note, setNote] = useState(null);
   const [error, setError] = useState(null);
   const [mcqs, setMcqs] = useState([]);
-  const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+
 
   useEffect(() => {
     const fetchNote = async () => {
       if (!user) return;
 
       try {
-        const response = await fetch(`/api/notes/${noteId}`, {
+        const response = await fetch(`${apiUrl}/api/notes/${noteId}`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
