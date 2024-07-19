@@ -4,16 +4,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const noteRoutes = require("./routes/notes");
 const userRoutes = require("./routes/user");
+const cors = require("cors");
 
 // express app
 const app = express();
 
 // middleware
+app.use(cors())
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+app.use(cors())
 
 // routes
 app.use("/api/notes", noteRoutes);
