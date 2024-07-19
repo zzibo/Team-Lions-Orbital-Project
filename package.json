@@ -6,9 +6,9 @@
     "scripts": {
       "install-backend": "cd backend && npm install react-scripts",
       "start-backend": "cd backend && node server.js",
-      "install-frontend": "cd frontend && react-scripts install",
-      "build-frontend": "cd frontend && react-scripts build",
-      "start-frontend": "cd frontend && react-scripts start"
+      "install-frontend": "cd frontend && npm install",
+      "build-frontend": "cd frontend && npm run build",
+      "start-frontend": "cd frontend && npm run start"
     },
     "keywords": [],
     "author": "",
