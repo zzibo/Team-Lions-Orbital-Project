@@ -14,7 +14,7 @@ const NotePage = () => {
   const [note, setNote] = useState(null);
   const [error, setError] = useState(null);
   const [mcqs, setMcqs] = useState([]);
-  const api_key = process.env.REACT_APP_OPENAI_API_KEY
+  const apiKey = process.env.REACT_APP_OPENAI_API_KEY
 
 
   useEffect(() => {
