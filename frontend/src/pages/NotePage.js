@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuthContext } from "../Hooks/useAuthContext";
 import "./NotePage.css";
-import { OpenAI } from "openai";
 
 import Mcq from "../Components/Mcq";
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -14,7 +13,6 @@ const NotePage = () => {
   const [note, setNote] = useState(null);
   const [error, setError] = useState(null);
   const [mcqs, setMcqs] = useState([]);
-  const apiKey = process.env.REACT_APP_OPENAI_API_KEY
 
 
   useEffect(() => {
@@ -33,6 +31,7 @@ const NotePage = () => {
           setError(json.error);
         } else {
           setNote(json);
+          setMcqs(json.mcqText); // Set mcqs state here after note is fetched
         }
       } catch (err) {
         setError("Failed to fetch note");
@@ -42,46 +41,6 @@ const NotePage = () => {
     fetchNote();
   }, [noteId, user]);
 
-  useEffect(() => {
-    const generateMCQs = async () => {
-      if (!note || !apiKey) return;
-      const openai = new OpenAI({ apiKey });
-
-      try {
-        //get response from chatgpt
-        const response = await openai.chat.completions.create({
-          model: "gpt-4o",
-          messages: [
-            {
-              role: "user",
-              content: `Generate 10 single multiple-choice questions from this text extracted from its PDF: ${note.pdfText}. 
-              The question generated should come from the text and serves as active recall questions to test me
-              Make sure I can see each question clearly and demarkate the correct answer
-              Please create all quiz questions using the following format. Label the correct answer with a symbol.
-              What is 2+3?
-              a) 6
-              b) 1
-              *c) 5
-              d) 10
-              Make sure no question sent is duplicated, there is no need for question number but seperate every question with |`,
-            },
-          ],
-        });
-        const qns = response.choices.map((choice) => choice.message.content);
-        console.log(qns);
-        //makes a list of all the qns
-        const newMcqs = qns.map((q) => q.split("|"));
-        console.log(newMcqs);
-        setMcqs(newMcqs);
-      } catch (error) {
-        console.error("Error generating MCQs:", error);
-        setMcqs(["Failed to generate MCQs"]);
-      }
-    };
-
-    generateMCQs();
-  }, [note, apiKey]);
-
   if (error) {
     return <div className="error">{error}</div>;
   }
@@ -90,13 +49,9 @@ const NotePage = () => {
     return <div>Loading...</div>;
   }
 
-  const pdfData = new Uint8Array(note.pdf.data.data).reduce(
-    (data, byte) => data + String.fromCharCode(byte),
-    ""
-  );
-
-  const pdfDataUrl = `data:${note.pdf.contentType};base64,${btoa(pdfData)}`;
-
+  const pdfData = new Uint8Array(note.pdf.data.data);
+  const pdfDataBlob = new Blob([pdfData], { type: note.pdf.contentType });
+  const pdfDataUrl = URL.createObjectURL(pdfDataBlob);
   return (
     <div className="note-page">
       <h2>{note.title}</h2>
@@ -107,7 +62,7 @@ const NotePage = () => {
         <object
           data={pdfDataUrl}
           type={note.pdf.contentType}
-          width="100%"
+          width="70%"
           height="800px"
         >
           <p>
@@ -118,10 +73,9 @@ const NotePage = () => {
       )}
       <div className="mcq-container">
         <h3>Generated MCQs:</h3>
+        {console.log(mcqs)}
         {mcqs.length > 0 ? (
-          mcqs[0].map((mcq, index) => (
-            <Mcq key={index} mcq={mcq} index={index} />
-          ))
+          mcqs.map((mcq, index) => <Mcq key={index} mcq={mcq} index={index} />)
         ) : (
           <p>MCQs generating...</p>
         )}

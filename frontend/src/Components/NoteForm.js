@@ -1,64 +1,69 @@
-import { useContext, useState } from "react"
-import "./NoteForm.css"
-import uploadlogo from "../Assets/UploadLogo.png"
-import { useNotesContext } from "../Hooks/useNotesContext"
-import { useAuthContext } from "../Hooks/useAuthContext"
+import { useContext, useState } from "react";
+import "./NoteForm.css";
+import uploadlogo from "../Assets/UploadLogo.png";
+import { useNotesContext } from "../Hooks/useNotesContext";
+import { useAuthContext } from "../Hooks/useAuthContext";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const NoteForm = () => {
-  const { dispatch } = useNotesContext()
-  const { user } = useAuthContext()
+  const { dispatch } = useNotesContext();
+  const { user } = useAuthContext();
 
-  const [title, setTitle] = useState("")
-  const [subject, setSubject] = useState("")
-  const [pdf, setPdf] = useState(null)
-  const [pdfFilename, setPdfFilename] = useState("")
-  const [error, setError] = useState(null)
-  const [emptyFields, setEmptyFields] = useState([])
+  const [title, setTitle] = useState("");
+  const [subject, setSubject] = useState("");
+  const [pdf, setPdf] = useState(null);
+  const [pdfFilename, setPdfFilename] = useState("");
+  const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!user) {
-      setError('You must be logged in')
-      return
+      setError("You must be logged in");
+      return;
     }
 
-    const formData = new FormData()
-    formData.append("title", title)
-    formData.append("subject", subject)
-    formData.append("pdf", pdf)
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("subject", subject);
+    formData.append("pdf", pdf);
 
     const response = await fetch(`${apiUrl}/api/notes`, {
       method: "POST",
       body: formData,
       headers: {
         //'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user.token}`
-      }
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     const json = await response.json();
 
     if (!response.ok) {
-      setError(json.error)
-      setEmptyFields(json.emptyFields)
+      setError(json.error);
+      setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
-      setError(null)
-      setTitle("")
-      setSubject("")
-      setPdf(null)
-      setPdfFilename("")
-      setEmptyFields([])
+      setError(null);
+      setTitle("");
+      setSubject("");
+      setPdf(null);
+      setPdfFilename("");
+      setEmptyFields([]);
       dispatch({ type: "CREATE_NOTE", payload: json });
     }
   };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setPdf(file);
-    setPdfFilename(file.name)
+    if (file) {
+      setPdf(file);
+      setPdfFilename(file.name);
+    } else {
+      setPdf(null);
+      setPdfFilename("");
+    }
   };
 
   return (
@@ -87,7 +92,7 @@ const NoteForm = () => {
         placeholder="Upload your PDF here"
         onChange={handleFileChange}
       />
-      
+
       <label htmlFor="pdf-input" className="input-label">
         {pdf ? pdf.name : "Upload your PDF here!"}
         {!pdf && <img src={uploadlogo} alt="Upload" className="upload-logo" />}

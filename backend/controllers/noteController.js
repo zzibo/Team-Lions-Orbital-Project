@@ -1,3 +1,6 @@
+require("dotenv").config();
+const OpenAI = require("openai");
+
 const Note = require("../models/noteModel");
 const mongoose = require("mongoose");
 const multer = require("multer");
@@ -57,10 +60,47 @@ const createNote = async (req, res) => {
         .json({ error: `Missing fields: ${missing.join(", ")}` });
     }
 
+    const generateMCQs = async (pdfText) => {
+      const { apiKey } = process.env.OPENAI_API_KEY;
+      const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
+
+      try {
+        //get response from chatgpt
+        const response = await openai.chat.completions.create({
+          model: "gpt-4o",
+          messages: [
+            {
+              role: "user",
+              content: `You are a MCQ generator for national examination. Your role is to make MCQs to test the knowledge of students to ensure they
+              remember key concepts taught. Generate 10 multiple-choice questions from this text extracted from its PDF: ${pdfText}. 
+              The question generated serves as active recall questions to test students on the content in the text
+              Make sure the correct answer is clearly demarkated with a *. Furthermore, there must be a ; infront of every option. A example of a sample question 
+              is shown below:
+              What is 2+3?
+              ;*a) 1.25 + 3.75
+              ;b) 1+3
+              ;c) 10/2.12
+              ;d) 2 * 2
+              Do not end the paragraph with a ;
+              Make sure no question sent is duplicated, there is no need for question number but seperate every question with |.
+              Furthermore, the disctraction you provide should be close to the correct answer to the make the mcqs more challenging`,
+            },
+          ],
+        });
+        const qns = response.choices.map((choice) => choice.message.content);
+        //makes a list of all the qns
+        const newMcqs = qns.map((q) => q.split("|"));
+        return newMcqs[0];
+      } catch (error) {
+        console.error("Error generating MCQs:", error);
+      }
+    };
+
     try {
       // Parse the PDF buffer to extract text
       const data = await pdfParse(pdfFile.buffer);
-      const pdfText = data.text;
+      const mcqText = await generateMCQs(data.text);
+      const pdfName = pdfFile.originalname;
       const user_id = req.user._id;
       const note = await Note.create({
         title,
@@ -69,7 +109,8 @@ const createNote = async (req, res) => {
           data: pdfFile.buffer,
           contentType: pdfFile.mimetype,
         },
-        pdfText,
+        mcqText,
+        pdfName,
         user_id,
       });
       res.status(201).json(note);
