@@ -6,17 +6,21 @@ const noteRoutes = require("./routes/notes");
 const userRoutes = require("./routes/user");
 const cors = require("cors");
 
+const corsOptions = {
+  origin: 'http://localhost:3000', // Replace with the URL of your frontend
+  optionsSuccessStatus: 200
+};
+
 // express app
 const app = express();
 
 // middleware
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
-app.use(cors())
 
 // routes
 app.use("/api/notes", noteRoutes);

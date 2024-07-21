@@ -6,11 +6,12 @@ import { useAuthContext } from "../Hooks/useAuthContext";
 // components
 import Notes from "../Components/Notes";
 import NoteForm from "../Components/NoteForm";
-const apiUrl = process.env.REACT_APP_API_URL;
+//const apiUrl = process.env.REACT_APP_API_URL;
 
 const Home = () => {
   const { notes, dispatch } = useNotesContext();
   const { user } = useAuthContext();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   //activates when notesProvider is rendered for the first time
   useEffect(() => {
