@@ -4,6 +4,8 @@ import uploadlogo from "../Assets/UploadLogo.png";
 import { useNotesContext } from "../Hooks/useNotesContext";
 import { useAuthContext } from "../Hooks/useAuthContext";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const NoteForm = () => {
   const { dispatch } = useNotesContext();
   const { user } = useAuthContext();
@@ -28,7 +30,7 @@ const NoteForm = () => {
     formData.append("subject", subject);
     formData.append("pdf", pdf);
 
-    const response = await fetch("/api/notes", {
+    const response = await fetch(`${apiUrl}/api/notes`, {
       method: "POST",
       body: formData,
       headers: {
