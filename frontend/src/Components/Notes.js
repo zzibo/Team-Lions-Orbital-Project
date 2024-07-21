@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 // date fns
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
-function Notes({ note, filename }) {
+function Notes({ note }) {
   const { dispatch } = useNotesContext();
   const { user } = useAuthContext();
   const nav = useNavigate();
@@ -39,18 +39,22 @@ function Notes({ note, filename }) {
     <div onClick={clickNote}>
       <div className="notes-container">
         <div>
-          <h4>{note.title}</h4>
-          <p>
-            <strong>Subject: </strong>
-            {note.subject}
-          </p>
-          <p>
-            <strong>pdf: </strong>
-            {filename}
-          </p>
-          <p>
-            {formatDistanceToNow(new Date(note.createdAt), { addSuffix: true })}
-          </p>
+          <div className="notes-details">
+            <h4>{note.title}</h4>
+            <p>
+              <strong>Subject: </strong>
+              {note.subject}
+            </p>
+            <p className="pdf-name">
+              <strong>pdf: </strong>
+              {note.pdfName}
+            </p>
+            <p>
+              {formatDistanceToNow(new Date(note.createdAt), {
+                addSuffix: true,
+              })}
+            </p>
+          </div>
           <span
             className="material-symbols-outlined"
             onClick={handleDelete}

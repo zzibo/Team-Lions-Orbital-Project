@@ -38,10 +38,7 @@ const Home = () => {
         Your Notes
       </h1>
       <div className="notes">
-        {notes &&
-          notes.map((note) => (
-            <Notes note={note} key={note._id} filename={note.filename} />
-          ))}
+        {notes && notes.map((note) => <Notes note={note} key={note._id} />)}
       </div>
     </div>
   );

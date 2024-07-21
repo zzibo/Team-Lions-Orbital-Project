@@ -11,17 +11,28 @@
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100px;
+  width: 30vw;
 }
 
-.notes-container h4 {
+.notes-details {
+  overflow: hidden;
+}
+.notes-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: #2893b6;
 }
-.notes-container p {
+.notes-details p {
   margin: 0;
   font-size: 0.9em;
   color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.note-header .pdf-name {
+  flex: 1; /* Allow this element to take up available space */
 }
 .notes-container span {
   position: absolute;

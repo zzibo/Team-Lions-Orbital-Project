@@ -16,9 +16,13 @@ const NoteSchema = new Schema(
       data: Buffer,
       contentType: String,
     },
-    pdfText: {
-      type: String,
+    mcqText: {
+      type: [String],
       required: false,
+    },
+    pdfName: {
+      type: String,
+      required: true,
     },
     user_id: {
       type: String,
