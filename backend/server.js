@@ -7,7 +7,7 @@ const userRoutes = require("./routes/user");
 const cors = require("cors");
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Replace with the URL of your frontend
+  origin: 'https://echonotes-fe.onrender.com', 
   optionsSuccessStatus: 200
 };
 
