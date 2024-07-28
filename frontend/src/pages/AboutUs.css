@@ -1,75 +1,80 @@
 .about-us {
-    padding: 2rem;
-    text-align: center;
-    background-color: white;
-    color: black;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .intro-text {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-  }
-  
-  .team-member {
-    display: flex;
-    align-items: center;
-    margin: 2rem 0;
-    background-color: #EEF7FF;
-    padding: 1rem;
-    border-radius: 10px;
-  }
-  
-  .team-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-right: 2rem;
-    
-  }
-  
-  .member-info {
-    max-width: 600px;
-    text-align: left;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  p {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  
-  .placeholder-text {
-    color: black;
-  }
+  padding: 2rem;
+  text-align: center;
+  background-color: white;
+  color: black;
+}
 
-  .info {
-    font-style: italic;
-  }
-  
-  .additional-info {
-    margin-top: 3rem;
-    text-align: left;
-    background-color: #EEF7FF;
-    padding: 1rem;
-    border-radius: 10px;
-  }
-  
-  .additional-info h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .additional-info p {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.intro-text {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+  background-color: #eef7ff;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.team-photo-a {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+
+.team-photo-z {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+
+.member-info {
+  max-width: 600px;
+  text-align: left;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.placeholder-text {
+  color: black;
+}
+
+.info {
+  font-style: italic;
+}
+
+.additional-info {
+  margin-top: 3rem;
+  text-align: left;
+  background-color: #eef7ff;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.additional-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.additional-info p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
