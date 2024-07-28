@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import "./NoteForm.css";
 import uploadlogo from "../Assets/UploadLogo.png";
 import { useNotesContext } from "../Hooks/useNotesContext";

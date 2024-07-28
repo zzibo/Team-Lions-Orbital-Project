@@ -31,7 +31,7 @@ const Home = () => {
     if (user) {
       fetchNotes();
     }
-  }, [dispatch, user]);
+  }, [dispatch, user, apiUrl]);
 
   return (
     <div className="home">

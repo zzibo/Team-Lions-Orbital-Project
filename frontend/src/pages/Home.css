@@ -36,11 +36,28 @@ div.error {
 .notes {
   display: grid;
   grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, 1fr)
-  ); /* Adjust column width as needed */
-  gap: 20px; /* Adjust gap between grid items */
+    3,
+    minmax(200px, 1fr)
+  ); /* Max 3 columns with a minimum size */
+  gap: 10px; /* Adjust gap between grid items */
+  grid-column-gap: 30px; /* Gap between columns */
   padding: 20px; /* Optional padding for grid container */
   max-width: 100vw;
   overflow-x: hidden;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+@media (max-width: 1200px) {
+  .notes {
+    grid-template-columns: repeat(
+      2,
+      minmax(300px, 1fr)
+    ); /* Max 2 columns for medium screens */
+  }
+}
+
+@media (max-width: 800px) {
+  .notes {
+    grid-template-columns: 1fr; /* Single column for small screens */
+  }
 }

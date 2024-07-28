@@ -1,5 +1,5 @@
 import "./NavBar.css";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import echonoteslogo from "../Assets/EchonotesLogo.png";
 import { useLogout } from "../Hooks/useLogout";
 import { useAuthContext } from "../Hooks/useAuthContext";
@@ -7,13 +7,6 @@ import { useAuthContext } from "../Hooks/useAuthContext";
 function NavBar() {
   const { logout } = useLogout();
   const { user } = useAuthContext();
-
-  const nav = useNavigate();
-
-  const aboutUs = () => {
-    nav("/aboutUs");
-  };
-
   const handleClick = () => {
     logout();
   };

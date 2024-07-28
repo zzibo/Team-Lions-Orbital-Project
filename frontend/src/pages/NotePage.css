@@ -1,3 +1,6 @@
+/* google font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
+
 .note-page {
   padding: 20px;
 }
@@ -23,15 +26,41 @@
   padding: 20px;
   background-color: #f9f9f9;
 }
-
-.mcq-item {
-  padding: 15px;
-  margin-bottom: 10px;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
+.flashcards-container {
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
 .separator {
   height: 20px; /* Adjust the height to increase/decrease the spacing */
+}
+
+.displayButtons {
+  margin-top: 10px;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.displayButton {
+  width: 250px;
+  font-family: "Poppins";
+  font-size: medium;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  transition: background-color 0.3s, border-color 0.3s;
+  outline: none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  margin-bottom: -1px; /* Align with content container */
+}
+
+.displayButton:not(:last-child) {
+  margin-right: 2px; /* Add space between tabs */
+}
+
+.displayButton.active {
+  background-color: #f9f9f9;
 }

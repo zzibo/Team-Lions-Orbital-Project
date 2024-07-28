@@ -11,15 +11,34 @@ const Mcq = ({ mcq, index }) => {
   const [parsedOptions, setParsedOptions] = useState([]);
 
   useEffect(() => {
+    // Check if options are changing on every render
+    console.log("Options:", options);
+
     const adjustedOptions = options.map((option) => {
       if (option.startsWith("*")) {
-        setAnswer(option.slice(1)); // Remove the * from the correct answer
         return option.slice(1); // Return the option without the *
       }
       return option;
     });
-    // Set the options without the * in the correct answer
-    setParsedOptions(adjustedOptions);
+
+    // Avoid unnecessary state updates by checking if adjustedOptions actually changed
+    setParsedOptions((prev) => {
+      if (JSON.stringify(prev) !== JSON.stringify(adjustedOptions)) {
+        return adjustedOptions;
+      }
+      return prev;
+    });
+
+    const correctAnswer = options.find((option) => option.startsWith("*"));
+    if (correctAnswer) {
+      setAnswer((prev) => {
+        const newAnswer = correctAnswer.slice(1);
+        if (prev !== newAnswer) {
+          return newAnswer;
+        }
+        return prev;
+      });
+    }
   }, [options]);
 
   useEffect(() => {

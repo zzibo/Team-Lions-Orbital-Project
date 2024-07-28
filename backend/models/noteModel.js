@@ -1,3 +1,4 @@
+const { json } = require("express");
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
@@ -17,6 +18,10 @@ const NoteSchema = new Schema(
       contentType: String,
     },
     mcqText: {
+      type: [String],
+      required: false,
+    },
+    flashCardText: {
       type: [String],
       required: false,
     },

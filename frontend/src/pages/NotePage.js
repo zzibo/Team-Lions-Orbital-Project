@@ -5,6 +5,7 @@ import { useAuthContext } from "../Hooks/useAuthContext";
 import "./NotePage.css";
 
 import Mcq from "../Components/Mcq";
+import FlashCard from "../Components/FlashCard";
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const NotePage = () => {
@@ -13,7 +14,16 @@ const NotePage = () => {
   const [note, setNote] = useState(null);
   const [error, setError] = useState(null);
   const [mcqs, setMcqs] = useState([]);
+  const [flashcards, setFlashCards] = useState([]);
+  const [showFlashCards, setShowFlashCards] = useState(false);
 
+  const displayMCQS = () => {
+    setShowFlashCards(false);
+  };
+
+  const displayFlashCards = () => {
+    setShowFlashCards(true);
+  };
 
   useEffect(() => {
     const fetchNote = async () => {
@@ -31,7 +41,8 @@ const NotePage = () => {
           setError(json.error);
         } else {
           setNote(json);
-          setMcqs(json.mcqText); // Set mcqs state here after note is fetched
+          setMcqs(json.mcqText);
+          setFlashCards(json.flashCardText);
         }
       } catch (err) {
         setError("Failed to fetch note");
@@ -71,13 +82,57 @@ const NotePage = () => {
           </p>
         </object>
       )}
-      <div className="mcq-container">
-        <h3>Generated MCQs:</h3>
-        {console.log(mcqs)}
-        {mcqs.length > 0 ? (
-          mcqs.map((mcq, index) => <Mcq key={index} mcq={mcq} index={index} />)
+
+      {/* Toggle button */}
+      <div className="generated-content">
+        <div className="displayButtons">
+          <button
+            className={`displayButton ${
+              showFlashCards === false ? "active" : ""
+            }`}
+            onClick={displayMCQS}
+          >
+            MCQS
+          </button>
+          <button
+            className={`displayButton ${
+              showFlashCards === true ? "active" : ""
+            }`}
+            onClick={displayFlashCards}
+          >
+            Flash Cards
+          </button>
+
+          {/* display either flashcards or mcq */}
+        </div>
+        {showFlashCards ? (
+          <div className="flashcards-container">
+            <h3>Generated Flash Cards:</h3>
+
+            {flashcards.length > 0 ? (
+              flashcards.map((flashcard, index) => (
+                <FlashCard
+                  key={index}
+                  flashcard={flashcard}
+                  index={index}
+                ></FlashCard>
+              ))
+            ) : (
+              <p> Flash Cards generating...</p>
+            )}
+          </div>
         ) : (
-          <p>MCQs generating...</p>
+          <div className="mcq-container">
+            <h3>Generated MCQs:</h3>
+
+            {mcqs.length > 0 ? (
+              mcqs.map((mcq, index) => (
+                <Mcq key={index} mcq={mcq} index={index} />
+              ))
+            ) : (
+              <p>MCQs generating...</p>
+            )}
+          </div>
         )}
       </div>
     </div>

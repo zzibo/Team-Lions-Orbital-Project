@@ -7,15 +7,15 @@ const userRoutes = require("./routes/user");
 const cors = require("cors");
 
 const corsOptions = {
-  origin: 'https://echonotes-fe.onrender.com', 
-  optionsSuccessStatus: 200
+  origin: "https://echonotes-fe.onrender.com",
+  optionsSuccessStatus: 200,
 };
 
 // express app
 const app = express();
 
 // middleware
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(req.path, req.method);

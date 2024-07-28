@@ -3,21 +3,34 @@
   flex-direction: column;
 }
 
+.mcq-item {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+
 .answer-container button {
-  margin: 10px;
+  margin: 5px;
   width: 25%;
   border-radius: 8px;
   padding: 5px;
   border: none;
-  background-color: rgb(233, 232, 232);
+  background-color: #eef7ff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.answer-container button:active {
+  transform: scale(0.95); /* Slightly reduce size */
 }
 
 .answer-container button.selected {
-  background-color: rgb(160, 159, 159);
+  background-color: #a9d2f7;
 }
 
 .answer-container button:hover {
-  background-color: rgb(172, 172, 172);
+  background-color: #a9d2f7;
   cursor: pointer;
 }
 
