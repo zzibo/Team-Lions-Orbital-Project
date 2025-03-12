@@ -8,8 +8,8 @@ import AboutUs from "./Pages/AboutUs";
 import { NotesProvider } from "./Context/NotesContext";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
-import LandingPage from "./Pages/LandingPage";
-import NotePage from "./Pages/NotePage";
+import LandingPage from "./pages/LandingPage";
+import NotePage from "./pages/NotePage";
 
 function App() {
   const { user } = useAuthContext();
