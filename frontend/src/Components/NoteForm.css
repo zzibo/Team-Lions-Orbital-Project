@@ -55,7 +55,8 @@
 }
 
 .button:active {
-  background-color: #5c5c5c; /* Change color when button is clicked*/
+  background-color: #5c5c5c;
+  /* Change color when button is clicked*/
 }
 
 .button-container {
@@ -80,4 +81,54 @@
   padding-left: 8px;
   padding-right: 8px;
   border-radius: 15px;
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.loader-container p {
+  color: #4b5563;
+}
+
+.loader-container-loader {
+  margin-bottom: 50px 0;
+
+}
+
+.processing-note {
+  font-size: 0.9em;
+  color: #6b7280;
+}
+
+.button-group {
+  display: flex;
+  gap: 20px;
+  /* increased from 10px */
+  justify-content: flex-start;
+  margin: 20px 0;
+}
+
+.button-group button {
+  padding: 15px 30px;
+  /* increased padding */
+  min-width: 120px;
+  /* set minimum width */
+  font-size: 16px;
+  /* larger font */
+  border-radius: 4px;
+  border: 0;
+  color: black;
+  font-family: "Poppins";
+  cursor: pointer;
+  background: rgb(42, 180, 42);
+
+}
+
+.button-group button:last-child {
+  background: rgb(246, 78, 78);
 }
