@@ -1,5 +1,7 @@
 import { useState } from "react"
-import { useSignup } from '../Hooks/useSignup'
+import { useSignup } from "../Hooks/useSignup"
+import Loader from "react-spinners/PacmanLoader";
+import '../Styles/Auth.css'
 
 const Signup = () => {
     const [email, setEmail] = useState('')
@@ -8,15 +10,13 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
         await signup(email, password)
     }
 
     return (
-
-        <form className = "signup" onSubmit={handleSubmit}>
+        <form className="auth-form" onSubmit={handleSubmit}>
             <h3>Sign up</h3>
-
+ 
             <label>Email:</label>
             <input
               type="email"
@@ -29,7 +29,20 @@ const Signup = () => {
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
-            <button disabled={isLoading}>Sign up</button>
+
+            {isLoading ?
+              <div className="loader">
+                <Loader
+                  color={"#2c3e50"}
+                  loading={isLoading}
+                  size={50}
+                  aria-label="Loading Spinner"
+                  data-testid="loader"
+                />
+                <p>Signing Up...</p>
+              </div>
+            : <button disabled={isLoading}>Sign Up</button>}
+        
             {error && <div className="error">{error}</div>}
         </form>
     )

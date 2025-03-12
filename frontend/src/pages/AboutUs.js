@@ -1,7 +1,7 @@
 import React from "react";
 import "./AboutUs.css";
 import teamMember1Photo from "../Assets/teamMember1.jpg";
-import teamMember2Photo from "../Assets/teamMember2.jpg";
+import teamMember2Photo from "../Assets/teamMember2.JPG";
 
 function AboutUs() {
   return (
