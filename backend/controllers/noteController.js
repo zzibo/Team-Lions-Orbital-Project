@@ -9,10 +9,21 @@ const pdfParse = require("pdf-parse");
 
 //get all notes
 const getNotes = async (req, res) => {
-  const user_id = req.user._id;
+  try {
+    const user_id = req.user._id;
 
-  const notes = await Note.find({ user_id }).sort({ createdAt: -1 });
-  res.status(200).json(notes);
+    const notes = await Note.find({ user_id })
+      .sort({ createdAt: -1 })
+      .allowDiskUse(true)
+      .exec();
+
+    res.status(200).json(notes);
+  } catch (error) {
+    res.status(500).json({
+      error: "Error fetching notes",
+      details: error.message,
+    });
+  }
 };
 
 //get one note
@@ -43,23 +54,7 @@ const createNote = async (req, res) => {
 
     const { title, subject } = req.body;
     const pdfFile = req.file; // PDF is available here after multer processing
-    const missing = [];
-
-    if (!title) {
-      missing.push("title");
-    }
-    if (!subject) {
-      missing.push("subject");
-    }
-    if (!pdfFile) {
-      missing.push("PDF");
-    }
-    if (missing.length > 0) {
-      return res
-        .status(400)
-        .json({ error: `Missing fields: ${missing.join(", ")}` });
-    }
-
+    
     //functiont to generate mcqs
     const generateMCQs = async (pdfText) => {
       const { apiKey } = process.env.OPENAI_API_KEY;
@@ -129,8 +124,8 @@ const createNote = async (req, res) => {
               2. Make sure you focus on concepts with more nuance and difficult to remember
               3. From the text, find 15 flash card content containing key concept and facts that you want your students to remember
               4. Based on your knowledge, evaluate content and grade it form 0 - 10 based on accuracy, importance and educational value
-              5. Select 10 best content 
-              6. Present the content to me in the following format:
+              5. Select 10 best content and generate 10 flashcards
+              6. Present the content in the following format:
 
               What is capital of france?;The capital of France is Paris
 
