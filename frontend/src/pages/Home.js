@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNotesContext } from "../Hooks/useNotesContext";
-import "./Home.css";
+import "../Styles/Home.css";
 import { useAuthContext } from "../Hooks/useAuthContext";
 
 // components

@@ -1,7 +1,7 @@
 import React from "react";
 import LandingPageImage from "../Assets/LandingPageImage.jpg";
 import logo from "../Assets/EchonotesLogo.png";
-import "./LandingPage.css";
+import "../Styles/LandingPage.css";
 import { Link } from "react-router-dom";
 import mascot from "../Assets/mascot.jpg";
 

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuthContext } from "../Hooks/useAuthContext";
-import "./NotePage.css";
+import "../Styles/NotePage.css";
 
 import Mcq from "../Components/Mcq";
 import FlashCard from "../Components/FlashCard";
