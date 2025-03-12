@@ -196,5 +196,4 @@ module.exports = {
   getNote,
   createNote,
   deleteNote,
-  //updateNote
 };
