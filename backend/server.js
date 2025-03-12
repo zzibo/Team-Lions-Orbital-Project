@@ -6,10 +6,11 @@ const noteRoutes = require("./routes/notes");
 const userRoutes = require("./routes/user");
 const cors = require("cors");
 
+// With this:
 const corsOptions = {
-  //origin: //"https://echonotes-fe.onrender.com",
-  origin: "http://localhost:3000",
+  origin: ["https://echonotes-fe.onrender.com", "http://localhost:3000"],
   optionsSuccessStatus: 200,
+  credentials: true,
 };
 
 // express app
