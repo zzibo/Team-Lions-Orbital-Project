@@ -37,4 +37,7 @@ const NoteSchema = new Schema(
   { timestamps: true }
 );
 
+// Add compound index for user_id and createdAt
+NoteSchema.index({ user_id: 1, createdAt: -1 });
+
 module.exports = mongoose.model("Note", NoteSchema);

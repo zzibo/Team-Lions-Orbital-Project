@@ -7,8 +7,8 @@ const userRoutes = require("./routes/user");
 const cors = require("cors");
 
 const corsOptions = {
-  origin: "https://echonotes-fe.onrender.com",
-  //origin: "http://localhost:3000",
+  // origin: "https://echonotes-fe.onrender.com",
+  origin: "http://localhost:3000",
   optionsSuccessStatus: 200,
 };
 
@@ -39,32 +39,3 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
-
-//unused aws code
-
-/*
-const AWS = require('aws-sdk')
-const multer = require('multer')
-const multerS3 = require('multer-s3')
-*/
-
-/* Configure AWS
-AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION
-});
-
-const s3 = new AWS.S3()
-
-const upload = multer({
-    storage: multerS3({
-      s3: s3,
-      bucket: 'your-s3-bucket-name',
-      acl: 'public-read',
-      key: function (req, file, cb) {
-        cb(null, Date.now().toString() + '-' + file.originalname); // File name in S3
-      }
-    })
-  });
-*/
