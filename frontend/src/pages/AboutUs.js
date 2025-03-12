@@ -1,7 +1,7 @@
 import React from "react";
 import "./AboutUs.css";
 import teamMember1Photo from "../Assets/teamMember1.jpg";
-import teamMember2Photo from "../Assets/teamMember2.JPG";
+import teamMember2Photo from "../Assets/teamMember2.jpg";
 
 function AboutUs() {
   return (
@@ -21,7 +21,7 @@ function AboutUs() {
         <div className="member-info">
           <h2>Aayush</h2>
           <p className="info">
-            Aayush is a Year 1 Business Analytics student at NUS
+            Aayush is a Year 1 Business Analytics student at NUS.
           </p>
         </div>
       </div>
